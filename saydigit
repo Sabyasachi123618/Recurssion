@@ -1,0 +1,17 @@
+//say digit for a number
+#include<bits/stdc++.h>
+using namespace std;
+void saydigit(int no,string arr[])
+{
+    if(no == 0)
+    return;
+    int digit = no%10;
+    no = no/10;
+    saydigit(no,arr);
+    cout<<arr[digit]<<" ";
+}
+int main()
+{
+    string arr[10] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    saydigit(432,arr);
+}
