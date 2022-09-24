@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using namespace std;
+int doi(int n){
+    if(n==0)
+    return 1;
+    return 2*doi(n-1);
+}
+int main() {
+    //code for power of 2
+    cout<<doi(4);
+}
