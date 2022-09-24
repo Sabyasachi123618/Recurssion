@@ -1,0 +1,20 @@
+//reverse a string using recurssion
+#include<bits/stdc++.h>
+using namespace std;
+void reverse(string &name,int i,int j)
+{
+    if(i>j)
+    return;
+    char temp = name[i];
+    name[i] = name[j];
+    name[j] = temp;
+    i++;j--;
+    reverse(name,i,j);
+}
+int main()
+{
+    string name = "Sabyasachi";
+    int n = name.length()-1;
+    reverse(name,0,n);
+    cout<<name;
+}
