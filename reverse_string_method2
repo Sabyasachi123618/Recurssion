@@ -1,0 +1,18 @@
+//check if the string is pallindrome or not
+#include<bits/stdc++.h>
+using namespace std;
+bool is_pall(string &name,int i,int j)
+{
+    if(i>j)
+    return true;
+    if(name[i]!=name[j])
+    return false;
+    i++;j--;
+    is_pall(name,i,j);
+}
+using namespace std;
+int main()
+{
+    string name = "madam";
+    cout<<is_pall(name,0,name.length()-1);
+}
