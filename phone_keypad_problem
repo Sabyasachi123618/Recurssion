@@ -1,0 +1,30 @@
+//leetcode problem
+class Solution {
+    private:
+    void solve(string digits,string res,int index,vector<string> &ans,string mapping[])
+    {
+        if(index >= digits.length())
+        {
+            ans.push_back(res);
+            return;
+        }
+        int ele = digits[index] - '0';
+        string value = mapping[ele];
+        for(int i = 0;i<value.length();i++)
+        {
+            res.push_back(value[i]);
+            solve(digits,res,index+1,ans,mapping);
+            res.pop_back();
+        }
+    }
+public:
+    vector<string> letterCombinations(string digits) {
+        vector<string> ans;
+        if(digits.length() == 0)
+            return ans;
+        string mapping[10] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        string res;
+        solve(digits,res,0,ans,mapping);
+        return ans;
+    }
+};
