@@ -1,0 +1,61 @@
+//gfg problem
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution
+{
+    private:
+    void solve(string S,vector<string> &ans,int index,unordered_map<string,bool> &m1)
+    {
+        if(index >= S.length())
+        {
+            if(m1.find(S)==m1.end()){
+            ans.push_back(S);
+            m1[S] = true;
+            return;
+            }
+        }
+        for(int i=index;i<S.length();i++)
+        {
+            swap(S[index],S[i]);
+            solve(S,ans,index+1,m1);
+            swap(S[index],S[i]);
+        }
+    }
+	public:
+		vector<string>find_permutation(string S)
+		{
+		    // Code here there
+		    unordered_map<string,bool> m1;
+		     vector<string> ans;
+		    int index = 0;
+		    solve(S,ans,index,m1);
+		    sort(ans.begin(),ans.end());
+		    return ans;
+		}
+};
+
+
+
+//{ Driver Code Starts.
+int main(){
+    int t;
+    cin >> t;
+    while(t--)
+    {
+	    string S;
+	    cin >> S;
+	    Solution ob;
+	    vector<string> ans = ob.find_permutation(S);
+	    for(auto i: ans)
+	    {
+	    	cout<<i<<" ";
+	    }
+	    cout<<"\n";
+    }
+	return 0;
+}
+
+// } Driver Code Ends
